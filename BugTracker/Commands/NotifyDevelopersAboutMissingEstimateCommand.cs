@@ -2,9 +2,9 @@ using BugTracker.Model;
 
 namespace BugTracker.Commands
 {
-    public class NotifyDeveloperAboutMissingEstimateCommand : ICommand
+    public class NotifyDevelopersAboutMissingEstimateCommand : ICommand
     {
-        public NotifyDeveloperAboutMissingEstimateCommand(Bug bug)
+        public NotifyDevelopersAboutMissingEstimateCommand(Bug bug)
         {
             Bug = bug;
         }

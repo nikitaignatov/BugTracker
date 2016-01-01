@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using BugTracker.Commands;
 using BugTracker.Events;
@@ -20,7 +21,9 @@ namespace BugTracker.Rules
             When().Match(() => bug,
                 s => s.Estimate.HasValue,
                 s => s.Resources.Any(x => x.Type == ResourceType.Manager),
-                s => s.Events.OfType<ChangedEstimateEvent>().Count() > s.Events.OfType<NotifiedManagerAboutChangedEstimateEvent>().Count());
+                s => s.Events.OfType<ChangedEstimateEvent>().Count() >
+                        s.Events.OfType<NotifiedManagerAboutChangedEstimateEvent>().Count() +
+                        s.Events.OfType<FailedToNotifyResourceEvent>().Count());
 
             Then()
                 .Do(ctx => handler.Handle(new NotifyManagementAboutChangedEstimateCommand(bug)))

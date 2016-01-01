@@ -6,13 +6,13 @@ using NRules.Fluent.Dsl;
 
 namespace BugTracker.Rules
 {
-    [Name("Notified developer about missing estimate")]
-    public class NotifyDeveloperAboutMissingEstimateRule : Rule
+    [Name("Notifty developers about missing estimate")]
+    public class NotifyDevelopersAboutMissingEstimateRule : Rule
     {
         public override void Define()
         {
             Bug bug = null;
-            IHandle<NotifyDeveloperAboutMissingEstimateCommand> handler = null;
+            IHandle<NotifyDevelopersAboutMissingEstimateCommand> handler = null;
 
             Dependency()
                 .Resolve(() => handler);
@@ -23,7 +23,7 @@ namespace BugTracker.Rules
                 s => !s.Events.OfType<NotifiedDevelopersAboutMissingEstimateEvent>().Any());
 
             Then()
-                .Do(ctx => handler.Handle(new NotifyDeveloperAboutMissingEstimateCommand(bug)))
+                .Do(ctx => handler.Handle(new NotifyDevelopersAboutMissingEstimateCommand(bug)))
                 .Do(ctx => ctx.Update(bug));
         }
     }

@@ -32,7 +32,7 @@ namespace BugTracker.Tests
             mail = Substitute.For<IMailService>();
 
             var repository = new RuleRepository();
-            repository.Load(x => x.From(typeof(NotifyDeveloperAboutMissingEstimateRule).Assembly));
+            repository.Load(x => x.From(typeof(NotifyDevelopersAboutMissingEstimateRule).Assembly));
             factory = repository.Compile();
 
             container = new Container();

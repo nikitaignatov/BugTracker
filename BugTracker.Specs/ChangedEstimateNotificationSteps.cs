@@ -28,7 +28,7 @@ namespace BugTracker.Specs
             ScenarioContext.Current.Set(mail, "mail");
 
             var repository = new RuleRepository();
-            repository.Load(x => x.From(typeof(NotifyDeveloperAboutMissingEstimateRule).Assembly));
+            repository.Load(x => x.From(typeof(NotifyDevelopersAboutMissingEstimateRule).Assembly));
             var factory = repository.Compile();
 
             var container = new Container();
@@ -80,7 +80,7 @@ namespace BugTracker.Specs
         [Then(@"Bug should have (.*) event of type '(.*)'")]
         public void ThenBugShouldHaveEventOfType(int numberOfEvents, string typeName)
         {
-            bug.Events.OfType<NotifiedManagerAboutChangedEstimateEvent>()
+            bug.Events
                 .Count(x => x.GetType().Name == typeName)
                 .Should().Be(numberOfEvents);
         }
