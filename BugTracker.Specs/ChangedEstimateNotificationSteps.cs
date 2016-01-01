@@ -41,29 +41,24 @@ namespace BugTracker.Specs
             ScenarioContext.Current.Set(container, "container");
         }
 
-        [Given(@"I have a bug '(.*)'")]
-        public void GivenIHaveABug(string name)
+        [Given(@"I report a new bug '(.*)' without an estimate")]
+        public void GivenIReportANewBugWithoutAnEstimate(string name)
         {
             dev = new User { Email = "dev@company" };
             manager = new User { Email = "manager@company" };
             bug = new Bug { Name = name };
         }
 
-        [Given(@"It is missing an estimate")]
-        public void GivenItIsMissingAnEstimate()
-        {
-            bug.Estimate = null;
-        }
-
-        [Given(@"It has Developer in resources")]
-        public void GivenItHasDeveloperInResources()
+        [Given(@"I assign a Developer")]
+        public void GivenIAssignADeveloper()
         {
             bug.Resources.Add(new Resource { User = dev, Type = ResourceType.Developer });
         }
 
-        [Given(@"It has Me as Manager in resources")]
-        public void GivenItHasMeAsManagerInResources()
+        [Given(@"I assign myself as a Manager and my mail address is '(.*)'")]
+        public void GivenIAssignMyselfAsAManagerAndMyMailAddressIs(string email)
         {
+            manager.Email = email;
             bug.Resources.Add(new Resource { User = manager, Type = ResourceType.Manager });
         }
 
@@ -75,11 +70,11 @@ namespace BugTracker.Specs
             changeEstimate.Handle(new ChangeEstimateCommand(bug, dev));
         }
 
-        [Then(@"I should recieve (\d+) email")]
-        public void ThenIShouldRecieveAnEmail(int numberOfMails)
+        [Then(@"Email is sent to '(.*)'")]
+        public void ThenEmailIsSentTo(string emailAddress)
         {
             var mail = ScenarioContext.Current.Get<IMailService>("mail");
-            mail.Received(numberOfMails).Send(Arg.Any<MailMessage>());
+            mail.Received(1).Send(Arg.Is<MailMessage>(x => x.To.Any(m => m.Address == emailAddress)));
         }
 
         [Then(@"Bug should have (.*) event of type '(.*)'")]

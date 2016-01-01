@@ -1,22 +1,22 @@
 ﻿Feature: Changed estimate notification
-	In order to know when estimates are changed
+	In order to know when estimates of a Bug are changed
 	As a Manager
-	I want to recieve notification
+	I want to recieve notification by email
+	As a System
+	I want to know that email was sent
 
 @notification @mail
 Scenario: Send mail notification to Manager
-	Given I have a bug 'cannot click on button'
-	And It is missing an estimate
-	And It has Developer in resources
-	And It has Me as Manager in resources
-	When Developer changes estimate
-	Then I should recieve 1 email
+	Given I report a new bug 'cannot click on button' without an estimate
+	  And I assign a Developer
+	  And I assign myself as a Manager and my mail address is 'manager@company'
+	 When Developer changes estimate
+	 Then Email is sent to 'manager@company'
 
 @notification @event
 Scenario: Add event when notification is sent
-	Given I have a bug 'cannot click on button'
-	And It is missing an estimate
-	And It has Developer in resources
-	And It has Me as Manager in resources
-	When Developer changes estimate
-	Then Bug should have 1 event of type 'NotifiedManagerAboutChangedEstimateEvent'
+	Given I report a new bug 'cannot click on button' without an estimate
+	  And I assign a Developer
+	  And I assign myself as a Manager and my mail address is 'manager@company'
+     When Developer changes estimate
+     Then Bug should have 1 event of type 'NotifiedManagerAboutChangedEstimateEvent'
