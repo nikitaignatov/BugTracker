@@ -79,6 +79,7 @@
     <Compile Include="Commands\NotifyManagementAboutChangedEstimateCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rules\NotifyDeveloperAboutMissingEstimateRule.cs" />
+    <Compile Include="Rules\NotifyManagementAboutMissingDeveloperRule.cs" />
     <Compile Include="Rules\NotifyManagementAboutNewEstimateRule.cs" />
     <Compile Include="SimpleInjectorDependencyResolver.cs" />
   </ItemGroup>
