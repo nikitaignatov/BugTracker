@@ -64,10 +64,10 @@ namespace BugTracker.Specs
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Send mail notification to Developer")]
-        public virtual void SendMailNotificationToDeveloper()
+        [NUnit.Framework.DescriptionAttribute("Assign developer")]
+        public virtual void AssignDeveloper()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Send mail notification to Developer", ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Assign developer", ((string[])(null)));
 #line 5
 this.ScenarioSetup(scenarioInfo);
 #line 6
@@ -76,39 +76,24 @@ this.ScenarioSetup(scenarioInfo);
   testRunner.When("I assign a Developer with mail address \'dev@company\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 8
   testRunner.Then("1 mail is sent to \'dev@company\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 9
+   testRunner.And("Bug should have 1 event of type \'NotifiedDevelopersAboutMissingEstimateEvent\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Add event when mail is sent to Developer")]
-        public virtual void AddEventWhenMailIsSentToDeveloper()
+        [NUnit.Framework.DescriptionAttribute("Fail when sending mail notification")]
+        public virtual void FailWhenSendingMailNotification()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add event when mail is sent to Developer", ((string[])(null)));
-#line 10
-this.ScenarioSetup(scenarioInfo);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Fail when sending mail notification", ((string[])(null)));
 #line 11
- testRunner.Given("I report a new bug \'cannot click on button\' without an estimate", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 12
-  testRunner.When("I assign a Developer with mail address \'dev@company\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 13
-  testRunner.Then("Bug should have 1 event of type \'NotifiedDevelopersAboutMissingEstimateEvent\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Add event when notification is failed to be sent to Developer")]
-        public virtual void AddEventWhenNotificationIsFailedToBeSentToDeveloper()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add event when notification is failed to be sent to Developer", ((string[])(null)));
-#line 15
 this.ScenarioSetup(scenarioInfo);
-#line 16
+#line 12
  testRunner.Given("I report a new bug \'cannot click on button\' without an estimate", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 17
+#line 13
   testRunner.When("I assign a Developer with mail address \'_\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 18
+#line 14
   testRunner.Then("Bug should have 1 event of type \'FailedToNotifyResourceEvent\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();

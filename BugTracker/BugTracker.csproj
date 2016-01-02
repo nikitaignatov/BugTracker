@@ -65,15 +65,15 @@
     <Compile Include="CommandHandler.cs" />
     <Compile Include="Commands\NotifyManagementAboutMissingDeveloperCommand.cs" />
     <Compile Include="Commands\CreateBugCommand.cs" />
-    <Compile Include="Commands\ICommand.cs" />
     <Compile Include="Events\AssignedResourceEvent.cs" />
     <Compile Include="Events\BugCreatedEvent.cs" />
     <Compile Include="Events\ChangedEstimateEvent.cs" />
     <Compile Include="Events\FailedToNotifyResourceEvent.cs" />
-    <Compile Include="Events\IEvent.cs" />
     <Compile Include="Events\NotifiedDevelopersAboutMissingEstimateEvent.cs" />
     <Compile Include="Events\NotifiedManagerAboutChangedEstimateEvent.cs" />
     <Compile Include="Events\NotifiedManagerAboutMissingDeveloperEvent.cs" />
+    <Compile Include="ICommand.cs" />
+    <Compile Include="IEvent.cs" />
     <Compile Include="IHandle.cs" />
     <Compile Include="IMailService.cs" />
     <Compile Include="Model\Bug.cs" />

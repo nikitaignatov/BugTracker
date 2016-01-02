@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Net.Mail;
 using BugTracker.Commands;
-using BugTracker.Events;
 using BugTracker.Model;
 using BugTracker.Rules;
 using FluentAssertions;
@@ -105,7 +104,7 @@ namespace BugTracker.Specs
             table.CompareToSet(list);
         }
 
-        public class EventHistory
+        class EventHistory
         {
             public int Occurances { get; set; }
             public string EventType { get; set; }

@@ -1,4 +1,4 @@
-﻿namespace BugTracker.Commands
+﻿namespace BugTracker
 {
     public interface ICommand { }
 }

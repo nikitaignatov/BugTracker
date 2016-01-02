@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BugTracker.Events
+namespace BugTracker
 {
     public interface IEvent { DateTime OccuredAt { get; } }
 }
