@@ -11,6 +11,7 @@ using NRules.Fluent;
 using NSubstitute;
 using SimpleInjector;
 using TechTalk.SpecFlow;
+using TechTalk.SpecFlow.Assist;
 
 namespace BugTracker.Specs
 {
@@ -91,6 +92,23 @@ namespace BugTracker.Specs
             bug.Events
                 .Count(x => x.GetType().Name == typeName)
                 .Should().Be(numberOfEvents);
+        }
+
+        [Then(@"Bug should have event of type")]
+        public void ThenBugShouldHaveEventOfType(Table table)
+        {
+            var list = bug.Events
+                .GroupBy(x => x.GetType().Name)
+                .Select(x => new EventHistory { Occurances = x.Count(), EventType = x.Key })
+                .ToList();
+
+            table.CompareToSet(list);
+        }
+
+        public class EventHistory
+        {
+            public int Occurances { get; set; }
+            public string EventType { get; set; }
         }
     }
 }
