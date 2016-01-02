@@ -20,6 +20,7 @@ namespace BugTracker.Rules
             When().Match(() => bug,
                 s => !s.Estimate.HasValue,
                 s => s.Resources.Any(x => x.Type == ResourceType.Developer),
+                s => !s.Events.OfType<FailedToNotifyResourceEvent>().Any(x => x.Command is NotifyDevelopersAboutMissingEstimateCommand),
                 s => !s.Events.OfType<NotifiedDevelopersAboutMissingEstimateEvent>().Any());
 
             Then()

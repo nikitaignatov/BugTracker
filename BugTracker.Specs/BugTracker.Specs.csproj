@@ -73,7 +73,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="ChangedEstimateNotificationSteps.cs" />
+    <Compile Include="NotificationSteps.cs" />
+    <Compile Include="MissingEstimateNotification.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MissingEstimateNotification.feature</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -81,6 +86,10 @@
     <None Include="ChangedEstimateNotification.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>ChangedEstimateNotification.feature.cs</LastGenOutput>
+    </None>
+    <None Include="MissingEstimateNotification.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>MissingEstimateNotification.feature.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
   </ItemGroup>

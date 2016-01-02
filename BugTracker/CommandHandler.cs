@@ -11,6 +11,7 @@ namespace BugTracker
     public class CommandHandler :
         IHandle<CreateBugCommand>,
         IHandle<ChangeEstimateCommand>,
+        IHandle<AssignResourceCommand>,
         IHandle<NotifyDevelopersAboutMissingEstimateCommand>,
         IHandle<NotifyManagementAboutMissingDeveloperCommand>,
         IHandle<NotifyManagementAboutChangedEstimateCommand>
@@ -47,9 +48,21 @@ namespace BugTracker
             session.Fire();
         }
 
+        public void Handle(AssignResourceCommand cmd)
+        {
+            cmd.Bug.Resources.Add(cmd.Resource);
+            cmd.Bug.Events.Add(new AssignedResourceEvent(cmd.Bug, cmd.Resource, cmd.AssignedBy, DateTime.Now));
+
+            // TODO: store in repo.
+
+            var session = ruleFactory.CreateSession();
+            session.Insert(cmd.Bug);
+            session.Fire();
+        }
+
         public void Handle(NotifyDevelopersAboutMissingEstimateCommand cmd)
         {
-            foreach (var resource in cmd.Bug.Resources.Where(x => x.Type == ResourceType.Manager).ToList())
+            foreach (var resource in cmd.Bug.Resources.Where(x => x.Type == ResourceType.Developer).ToList())
             {
                 Send(resource.User.Email, "missing_estimate",
                     message => cmd.Bug.Events.Add(new NotifiedDevelopersAboutMissingEstimateEvent(cmd.Bug, DateTime.Now)),
