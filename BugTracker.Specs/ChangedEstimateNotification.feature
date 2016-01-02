@@ -23,7 +23,7 @@ Scenario: Change estimate multiple times
 	 When Developer changes estimate to 2 hours
 	 When Developer changes estimate to 4 hours
 	 When Developer changes estimate to 6 hours
-	 Then 2 mails is sent to 'manager@company'
+	 Then 3 mails is sent to 'manager@company'
 	  And Bug should have 3 event of type 'NotifiedManagerAboutChangedEstimateEvent'
 
 @notification @event @failure
