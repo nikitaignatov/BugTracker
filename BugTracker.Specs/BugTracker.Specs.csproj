@@ -68,46 +68,28 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ChangedEstimateNotification.feature.cs">
-      <DependentUpon>ChangedEstimateNotification.feature</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="EventHistory.feature.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>EventHistory.feature</DependentUpon>
-    </Compile>
     <Compile Include="Flags.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Flags.feature</DependentUpon>
     </Compile>
-    <Compile Include="NotificationSteps.cs" />
-    <Compile Include="MissingEstimateNotification.feature.cs">
+    <Compile Include="Notifications.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>MissingEstimateNotification.feature</DependentUpon>
+      <DependentUpon>Notifications.feature</DependentUpon>
     </Compile>
+    <Compile Include="NotificationSteps.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="ChangedEstimateNotification.feature">
-      <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>ChangedEstimateNotification.feature.cs</LastGenOutput>
-    </None>
-    <None Include="EventHistory.feature">
-      <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>EventHistory.feature.cs</LastGenOutput>
-    </None>
     <None Include="Flags.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>Flags.feature.cs</LastGenOutput>
     </None>
-    <None Include="MissingEstimateNotification.feature">
+    <None Include="Notifications.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>MissingEstimateNotification.feature.cs</LastGenOutput>
+      <LastGenOutput>Notifications.feature.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
