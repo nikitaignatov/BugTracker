@@ -6,20 +6,26 @@
 	I should be presented with what actions are missing to be done
 
 Scenario: Project without sprints
-	Given I have a project
+	Given A project
 	When Number of sprints in the project is 0
-	Then Project is flagged with 'missing sprints'
+	Then Project is flagged with 'no sprints added'
 
 Scenario: Sprint without bugs
-	Given I have a sprint
+	Given A sprint
 	When Number of bugs in sprint is 0
-	Then Sprint is flagged wit 'missing bugs'
+	Then Sprint is flagged wit 'no bugs'
 
 Scenario: Bug not in sprint
-	Given I have a bug
+	Given A bug
 	When Bug is not in sprint
 	Then Bug is flagged with 'not in sprint'
 
 Scenario: Bug not estimated
+	Given A bug
+	When Estimate is missing
+	Then Bug is flagged with 'not estimated'
 
-Scenario: Bug missing resources
+Scenario: Bug has no resources assigned
+	Given A bug
+	When Rources are not assigned
+	Then Bug is flagged with 'no resources assigned'
