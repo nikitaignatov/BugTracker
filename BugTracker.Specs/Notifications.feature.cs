@@ -85,18 +85,56 @@ this.ScenarioSetup(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Assign developer (simplified)")]
+        public virtual void AssignDeveloperSimplified()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Assign developer (simplified)", ((string[])(null)));
+#line 14
+this.ScenarioSetup(scenarioInfo);
+#line 15
+ testRunner.Given("I report a new bug without an estimate", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 16
+ testRunner.When("I assign a Developer with mail address", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 17
+ testRunner.Then("1 mail is sent to the Developer", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 18
+ testRunner.And("Bug should have an event log indicating that the mail was sent", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Fail when sending mail notification")]
         public virtual void FailWhenSendingMailNotification()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Fail when sending mail notification", ((string[])(null)));
-#line 14
+#line 20
 this.ScenarioSetup(scenarioInfo);
-#line 15
+#line 21
  testRunner.Given("I report a new bug \'cannot click on button\' without an estimate", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 16
+#line 22
   testRunner.When("I assign a Developer with mail address \'_\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 17
+#line 23
   testRunner.Then("Bug should have 1 event of type \'FailedToNotifyResourceEvent\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Fail when sending mail notification (simplified)")]
+        public virtual void FailWhenSendingMailNotificationSimplified()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Fail when sending mail notification (simplified)", ((string[])(null)));
+#line 25
+this.ScenarioSetup(scenarioInfo);
+#line 26
+ testRunner.Given("I report a new bug without an estimate", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 27
+ testRunner.When("I assign a Developer that has an invalid mail address", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 28
+ testRunner.Then("Bug should have an event log that indicates that mail was not", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 29
+ testRunner.And("Event should have detailed description of the failure", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -108,20 +146,45 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Change estimate", new string[] {
                         "notification"});
-#line 20
+#line 32
 this.ScenarioSetup(scenarioInfo);
-#line 21
+#line 33
  testRunner.Given("I report a new bug \'cannot click on button\' without an estimate", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 22
+#line 34
    testRunner.And("I assign a Developer with mail address \'dev@company\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 23
+#line 35
    testRunner.And("I assign myself as a Manager and my mail address is \'manager@company\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 24
+#line 36
   testRunner.When("Developer changes estimate to 2 hours", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 25
+#line 37
   testRunner.Then("1 mail is sent to \'manager@company\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 26
+#line 38
    testRunner.And("Bug should have 1 event of type \'NotifiedManagerAboutChangedEstimateEvent\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Change estimate (simplified)")]
+        [NUnit.Framework.CategoryAttribute("notification")]
+        public virtual void ChangeEstimateSimplified()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Change estimate (simplified)", new string[] {
+                        "notification"});
+#line 41
+this.ScenarioSetup(scenarioInfo);
+#line 42
+ testRunner.Given("I report a new bug without an estimate", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 43
+ testRunner.And("I assign a Developer", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 44
+ testRunner.And("I assign myself as a Manager", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 45
+ testRunner.When("Developer changes estimate", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 46
+ testRunner.Then("Mail is sent to me", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 47
+ testRunner.And("Bug should have an event log indicating that mail was sent", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -133,24 +196,50 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Change estimate multiple times", new string[] {
                         "notification"});
-#line 29
+#line 50
 this.ScenarioSetup(scenarioInfo);
-#line 30
+#line 51
  testRunner.Given("I report a new bug \'cannot click on button\' without an estimate", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 31
+#line 52
    testRunner.And("I assign a Developer with mail address \'dev@company\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 32
+#line 53
    testRunner.And("I assign myself as a Manager and my mail address is \'manager@company\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 33
+#line 54
   testRunner.When("Developer changes estimate to 2 hours", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 34
+#line 55
   testRunner.When("Developer changes estimate to 4 hours", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 35
+#line 56
   testRunner.When("Developer changes estimate to 6 hours", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 36
+#line 57
   testRunner.Then("3 mails is sent to \'manager@company\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 37
+#line 58
    testRunner.And("Bug should have 3 event of type \'NotifiedManagerAboutChangedEstimateEvent\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Change estimate multiple times (simplified)")]
+        [NUnit.Framework.CategoryAttribute("notification")]
+        public virtual void ChangeEstimateMultipleTimesSimplified()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Change estimate multiple times (simplified)", new string[] {
+                        "notification"});
+#line 61
+this.ScenarioSetup(scenarioInfo);
+#line 62
+ testRunner.Given("I report a new bug without an estimate", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 63
+   testRunner.And("I assign a Developer", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 64
+   testRunner.And("I assign myself as a Manager", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 65
+  testRunner.When("Developer changes estimate multiple times", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 66
+  testRunner.Then("I as a Manager recieve mail each time estimate is changed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 67
+   testRunner.And("Bug should have an event log for each of the changes that indicates that mail was" +
+                    " sent", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -166,18 +255,47 @@ this.ScenarioSetup(scenarioInfo);
                         "notification",
                         "event",
                         "failure"});
-#line 40
+#line 70
 this.ScenarioSetup(scenarioInfo);
-#line 41
+#line 71
  testRunner.Given("I report a new bug \'cannot click on button\' without an estimate", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 42
+#line 72
    testRunner.And("I assign a Developer with mail address \'dev@company\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 43
+#line 73
    testRunner.And("I assign myself as a Manager and my mail address is \'&\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 44
+#line 74
   testRunner.When("Developer changes estimate to 2 hours", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 45
+#line 75
   testRunner.Then("Bug should have 1 event of type \'FailedToNotifyResourceEvent\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Failure when sending mail (simplified)")]
+        [NUnit.Framework.CategoryAttribute("notification")]
+        [NUnit.Framework.CategoryAttribute("event")]
+        [NUnit.Framework.CategoryAttribute("failure")]
+        public virtual void FailureWhenSendingMailSimplified()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Failure when sending mail (simplified)", new string[] {
+                        "notification",
+                        "event",
+                        "failure"});
+#line 78
+this.ScenarioSetup(scenarioInfo);
+#line 79
+ testRunner.Given("I report a new bug without an estimate", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 80
+ testRunner.And("I assign a Developer", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 81
+ testRunner.And("I assign myself as a Manager with an invalid mail address", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 82
+ testRunner.When("Developer changes estimate", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 83
+ testRunner.Then("Bug should have an event log that indicates that mail was not", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 84
+ testRunner.And("Event should have detailed description of the failure", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -189,19 +307,19 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("View event history", new string[] {
                         "mytag"});
-#line 49
+#line 87
 this.ScenarioSetup(scenarioInfo);
-#line 50
+#line 88
  testRunner.Given("I report a new bug \'cannot click on button\' without an estimate", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 51
+#line 89
    testRunner.And("I assign myself as a Manager and my mail address is \'manager@company\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 52
+#line 90
    testRunner.And("I assign a Developer with mail address \'dev@company\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 53
+#line 91
   testRunner.When("Developer changes estimate to 8 hours", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 54
+#line 92
   testRunner.When("Developer changes estimate to 4 hours", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 55
+#line 93
   testRunner.When("Developer changes estimate to 6 hours", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
@@ -222,7 +340,7 @@ this.ScenarioSetup(scenarioInfo);
             table1.AddRow(new string[] {
                         "3",
                         "NotifiedManagerAboutChangedEstimateEvent"});
-#line 56
+#line 94
   testRunner.Then("Bug should have event of type", ((string)(null)), table1, "Then ");
 #line hidden
             this.ScenarioCleanup();

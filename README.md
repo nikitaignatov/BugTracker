@@ -16,6 +16,7 @@ Interesting material:
 * [Non-Capturing Group] by [Simon Parsons]
 * [SpecFlow table linking] by [Simon Parsons]
 * [Writing Better Cucumber Scenarios] by [Josh Clayton], @joshuaclayton
+* [Describe the User's Perspective] by [Mike Burns]
 
 [NRules]:http://www.specflow.org/
 [SpecFlow]:http://www.specflow.org/
@@ -32,3 +33,5 @@ Interesting material:
 [NUnit 3]:https://github.com/nunit/nunit/wiki
 [Writing Better Cucumber Scenarios]:https://robots.thoughtbot.com/writing-better-cucumber-scenarios-or-why-were
 [Josh Clayton]:http://joshuaclayton.me/
+[Describe the User's Perspective]:https://robots.thoughtbot.com/describe-the-users-perspective-ddd-acceptance
+[Mike Burns]:https://mike-burns.com/

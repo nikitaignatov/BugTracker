@@ -11,10 +11,22 @@ Scenario: Assign developer
 	 Then 1 mail is sent to 'dev@company'
 	  And Bug should have 1 event of type 'NotifiedDevelopersAboutMissingEstimateEvent'
 
+Scenario: Assign developer (simplified)
+	Given I report a new bug without an estimate
+	When I assign a Developer with mail address
+	Then 1 mail is sent to the Developer
+	And Bug should have an event log indicating that the mail was sent
+
 Scenario: Fail when sending mail notification
 	Given I report a new bug 'cannot click on button' without an estimate
 	 When I assign a Developer with mail address '_'
 	 Then Bug should have 1 event of type 'FailedToNotifyResourceEvent'
+
+Scenario: Fail when sending mail notification (simplified)
+	Given I report a new bug without an estimate
+	When I assign a Developer that has an invalid mail address
+	Then Bug should have an event log that indicates that mail was not
+	And Event should have detailed description of the failure
 
 @notification
 Scenario: Change estimate
@@ -24,6 +36,15 @@ Scenario: Change estimate
 	 When Developer changes estimate to 2 hours
 	 Then 1 mail is sent to 'manager@company'
 	  And Bug should have 1 event of type 'NotifiedManagerAboutChangedEstimateEvent'
+
+@notification
+Scenario: Change estimate (simplified)
+	Given I report a new bug without an estimate
+	And I assign a Developer
+	And I assign myself as a Manager
+	When Developer changes estimate
+	Then Mail is sent to me
+	And Bug should have an event log indicating that mail was sent
 
 @notification
 Scenario: Change estimate multiple times
@@ -36,6 +57,15 @@ Scenario: Change estimate multiple times
 	 Then 3 mails is sent to 'manager@company'
 	  And Bug should have 3 event of type 'NotifiedManagerAboutChangedEstimateEvent'
 
+@notification
+Scenario: Change estimate multiple times (simplified)
+	Given I report a new bug without an estimate
+	  And I assign a Developer
+	  And I assign myself as a Manager
+	 When Developer changes estimate multiple times
+	 Then I as a Manager recieve mail each time estimate is changed
+	  And Bug should have an event log for each of the changes that indicates that mail was sent
+
 @notification @event @failure
 Scenario: Failure when sending mail
 	Given I report a new bug 'cannot click on button' without an estimate
@@ -44,6 +74,14 @@ Scenario: Failure when sending mail
 	 When Developer changes estimate to 2 hours
 	 Then Bug should have 1 event of type 'FailedToNotifyResourceEvent'
 
+@notification @event @failure
+Scenario: Failure when sending mail (simplified)
+	Given I report a new bug without an estimate
+	And I assign a Developer
+	And I assign myself as a Manager with an invalid mail address
+	When Developer changes estimate
+	Then Bug should have an event log that indicates that mail was not
+	And Event should have detailed description of the failure
 
 @mytag
 Scenario: View event history
