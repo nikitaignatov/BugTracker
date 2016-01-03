@@ -8,12 +8,12 @@
 Scenario: Project without sprints
 	Given A project
 	When Number of sprints in the project is 0
-	Then Project is flagged with 'no sprints added'
+	Then Project is flagged with 'no sprints added to project'
 
 Scenario: Sprint without bugs
 	Given A sprint
 	When Number of bugs in sprint is 0
-	Then Sprint is flagged wit 'no bugs'
+	Then Sprint is flagged wit 'no bugs in sprint'
 
 Scenario: Bug not in sprint
 	Given A bug
@@ -29,3 +29,8 @@ Scenario: Bug has no resources assigned
 	Given A bug
 	When Rources are not assigned
 	Then Bug is flagged with 'no resources assigned'
+
+Scenario: Sprint has no due date
+	Given A sprint
+	When Due date is not defined
+	Then Bug is flagged with 'Due date is not set'

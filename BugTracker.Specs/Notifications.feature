@@ -6,19 +6,6 @@ Feature: Notifications
 	As a System
 	I will send notifications and keep track of what has been sent
 
-Scenario Outline: Assign resources
-	Given I report a new bug 'cannot click on button' without an estimate
-	 When I assign a <resource type> with mail address '<mail address>'
-	 Then <x> mails is sent to '<mail address>'
-	  And Bug should have <y> events of type '<event>'
-
-  Examples:
-    | resource type | mail address | x | y | event                                       |
-    | Developer     | dev@company  | 1 | 1 | NotifiedDevelopersAboutMissingEstimateEvent |
-    | Developer     | _            | 0 | 1 | FailedToNotifyResourceEvent                 |
-    | Manager       | dev@company  | 0 | 0 |                                             |
-    | Manager       | &            | 0 | 0 |                                             |
-
 Scenario: Assign developer
 	Given I report a new bug 'cannot click on button' without an estimate
 	 When I assign a Developer with mail address 'dev@company'
@@ -94,6 +81,19 @@ Scenario: Failure when sending mail (simplified)
 	When Developer changes estimate
 	Then Bug should have an event log that indicates that mail was not
 	And Event should have detailed description of the failure
+
+Scenario Outline: Assign resources
+	Given I report a new bug 'cannot click on button' without an estimate
+	 When I assign a <resource type> with mail address '<mail address>'
+	 Then <x> mails is sent to '<mail address>'
+	  And Bug should have <y> events of type '<event>'
+
+  Examples:
+    | resource type | mail address | x | y | event                                       |
+    | Developer     | dev@company  | 1 | 1 | NotifiedDevelopersAboutMissingEstimateEvent |
+    | Developer     | _            | 0 | 1 | FailedToNotifyResourceEvent                 |
+    | Manager       | dev@company  | 0 | 0 |                                             |
+    | Manager       | &            | 0 | 0 |                                             |
 
 @history
 Scenario: View event history

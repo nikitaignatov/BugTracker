@@ -73,6 +73,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Flags.feature</DependentUpon>
     </Compile>
+    <Compile Include="FlagsSteps.cs" />
     <Compile Include="Notifications.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

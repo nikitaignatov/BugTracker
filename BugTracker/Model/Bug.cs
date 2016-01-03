@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using BugTracker.Events;
 
 namespace BugTracker.Model
 {
@@ -11,20 +10,28 @@ namespace BugTracker.Model
         {
             Events = new List<IEvent>();
             Resources = new List<Resource>();
+            Flags = new List<IFlag>();
         }
         public string Name { get; set; }
         public DateTime CreationDate { get; set; }
-        public Project Project { get; set; }
+        public Sprint Sprint { get; set; }
         public TimeSpan? Estimate { get; set; }
         public virtual ICollection<IEvent> Events { get; set; }
         public virtual ICollection<Resource> Resources { get; set; }
+        public ICollection<IFlag> Flags { get; set; }
     }
 
     public class Project
     {
+        public Project()
+        {
+            Sprints = new List<Sprint>();
+            Flags = new List<IFlag>();
+        }
         public string Name { get; set; }
         public virtual ICollection<Sprint> Sprints { get; set; }
         public IEnumerable<Bug> Bugs => Sprints.SelectMany(x => x.Bugs);
+        public ICollection<IFlag> Flags { get; set; }
     }
 
     public class Tag
@@ -60,11 +67,13 @@ namespace BugTracker.Model
         public Sprint()
         {
             Bugs = new List<Bug>();
+            Flags = new List<IFlag>();
         }
 
         public string Name { get; set; }
         public DateTime? DueDate { get; set; }
         public virtual ICollection<Bug> Bugs { get; set; }
+        public ICollection<IFlag> Flags { get; set; }
 
         public int CompareTo(Sprint other)
         {
