@@ -71,9 +71,9 @@ namespace BugTracker.Specs
         [NUnit.Framework.DescriptionAttribute("Assign resources")]
         [NUnit.Framework.TestCaseAttribute("Developer", "dev@company", "1", "1", "NotifiedDevelopersAboutMissingEstimateEvent", new string[0])]
         [NUnit.Framework.TestCaseAttribute("Developer", "_", "0", "1", "FailedToNotifyResourceEvent", new string[0])]
-        [NUnit.Framework.TestCaseAttribute("Manager", "dev@company", "0", "0", "_", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("Manager", "dev@company", "0", "0", "", new string[0])]
         [NUnit.Framework.TestCaseAttribute("Manager", "&", "0", "0", "", new string[0])]
-        public virtual void AssignResources(string resourceType, string mailAddress, string mailsSent, string eventLogs, string @event, string[] exampleTags)
+        public virtual void AssignResources(string resourceType, string mailAddress, string x, string y, string @event, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Assign resources", exampleTags);
 #line 9
@@ -83,9 +83,9 @@ this.ScenarioSetup(scenarioInfo);
 #line 11
   testRunner.When(string.Format("I assign a {0} with mail address \'{1}\'", resourceType, mailAddress), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 12
-  testRunner.Then(string.Format("{0} mail is sent to \'{1}\'", mailsSent, mailAddress), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+  testRunner.Then(string.Format("{0} mails is sent to \'{1}\'", x, mailAddress), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 13
-   testRunner.And(string.Format("Bug should have {0} event of type \'{1}\'", eventLogs, @event), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+   testRunner.And(string.Format("Bug should have {0} events of type \'{1}\'", y, @event), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
         }

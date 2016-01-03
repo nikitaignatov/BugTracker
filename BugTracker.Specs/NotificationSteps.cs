@@ -84,7 +84,7 @@ namespace BugTracker.Specs
             service.Received(numberOfMails).Send(Arg.Is<MailMessage>(x => x.To.Any(m => m.Address == emailAddress)));
         }
 
-        [Then(@"Bug should have (.*) event of type '(.*)'")]
+        [Then(@"Bug should have (.*) events? of type '(.*)'")]
         public void ThenBugShouldHaveEventOfType(int numberOfEvents, string typeName)
         {
             bug.Events

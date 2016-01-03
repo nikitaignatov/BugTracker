@@ -9,15 +9,15 @@ Feature: Notifications
 Scenario Outline: Assign resources
 	Given I report a new bug 'cannot click on button' without an estimate
 	 When I assign a <resource type> with mail address '<mail address>'
-	 Then <mails sent> mail is sent to '<mail address>'
-	  And Bug should have <event logs> event of type '<event>'
+	 Then <x> mails is sent to '<mail address>'
+	  And Bug should have <y> events of type '<event>'
 
   Examples:
-    | resource type | mail address | mails sent | event logs | event                                       |
-    | Developer     | dev@company  | 1          | 1          | NotifiedDevelopersAboutMissingEstimateEvent |
-    | Developer     | _            | 0          | 1          | FailedToNotifyResourceEvent                 |
-    | Manager       | dev@company  | 0          | 0          | _                                           |
-    | Manager       | &            | 0          | 0          |                                             |
+    | resource type | mail address | x | y | event                                       |
+    | Developer     | dev@company  | 1 | 1 | NotifiedDevelopersAboutMissingEstimateEvent |
+    | Developer     | _            | 0 | 1 | FailedToNotifyResourceEvent                 |
+    | Manager       | dev@company  | 0 | 0 |                                             |
+    | Manager       | &            | 0 | 0 |                                             |
 
 Scenario: Assign developer
 	Given I report a new bug 'cannot click on button' without an estimate
