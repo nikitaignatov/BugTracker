@@ -77,12 +77,11 @@ namespace BugTracker.Specs
             handler.Handle(new ChangeEstimateCommand(bug, dev));
         }
 
-        [Then(@"(\d+) mail is sent to '(.*)'")]
-        [Then(@"(\d+) mails is sent to '(.*)'")]
+        [Then(@"(\d+) mails? (?:is|are) sent to '(.*)'")]
         public void ThenEmailIsSentTo(int numberOfMails, string emailAddress)
         {
-            var mail = ScenarioContext.Current.Get<IMailService>("mail");
-            mail.Received(numberOfMails).Send(Arg.Is<MailMessage>(x => x.To.Any(m => m.Address == emailAddress)));
+            var service = container.GetInstance<IMailService>();
+            service.Received(numberOfMails).Send(Arg.Is<MailMessage>(x => x.To.Any(m => m.Address == emailAddress)));
         }
 
         [Then(@"Bug should have (.*) event of type '(.*)'")]
