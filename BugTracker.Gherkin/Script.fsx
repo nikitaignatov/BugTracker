@@ -14,7 +14,7 @@ let test p str =
     | Failure(errorMsg, _, _) -> printfn "Failure: %s" errorMsg
 
 
-test comments "#sdjkh ksdkjs d"
+test comment "#sdjkh ksdkjs d"
 test table "|m5|
 | d|"
 test feature "Feature:lakdjal dkjakljd alkjd aldjk"
@@ -29,6 +29,7 @@ Given I have some money
 When I ran out of money
 Then I make a loan in the bank
 And  options
+But  som stuff
 |loan amount|duration|
 |5000|25|
 |3000|12|

@@ -10,6 +10,7 @@ module Parser =
     let token : Parser<string, unit> = many1Satisfy (fun c -> isDigit c || isLetter c)
     let input : Parser<string, unit> = ws >>. many1Chars (noneOf "\n") .>> optional (many (pchar '\n'))
     let cellInput : Parser<string, unit> = many1Satisfy (isNoneOf "|\n")
+    let stepToDefinition s (a, b) = (a :: b) |> List.map (Definition >> s)
 
     /// Comment parser
     let comment = str "#" >>. input |>> Comment
@@ -22,10 +23,11 @@ module Parser =
                 |> many
                 |>> Table
 
-    /// Definition parser TODO:refactor
-    let definition identity s =
-        (str identity >>. input .>>. opt table) .>>. many (str "And " >>. input .>>. opt table)
-        |>> (fun (a, b) -> (a :: b) |> List.map (Definition >> s))
+    /// Step parser
+    let step keyword = (str keyword >>. input .>>. opt table)
+
+    /// Definition parser
+    let definition identity s = (step identity) .>>. many (step "And " <|> step "But ") |>> stepToDefinition s
 
     /// Steps parser
     let steps = definition "Given " Given <|> definition "When " When <|> definition "Then " Then |> many
