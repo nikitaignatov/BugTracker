@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BugTracker.Tests", "BugTrac
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BugTracker.Specs", "BugTracker.Specs\BugTracker.Specs.csproj", "{5EFB75CC-71AB-44D9-AE0E-4C62B528F286}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Gherkin", "BugTracker.Gherkin\Gherkin.fsproj", "{C2C53461-EC55-46D6-80C1-6160E1B1915A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{5EFB75CC-71AB-44D9-AE0E-4C62B528F286}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5EFB75CC-71AB-44D9-AE0E-4C62B528F286}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5EFB75CC-71AB-44D9-AE0E-4C62B528F286}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2C53461-EC55-46D6-80C1-6160E1B1915A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2C53461-EC55-46D6-80C1-6160E1B1915A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2C53461-EC55-46D6-80C1-6160E1B1915A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2C53461-EC55-46D6-80C1-6160E1B1915A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
