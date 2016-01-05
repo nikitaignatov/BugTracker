@@ -23,7 +23,7 @@ Scenario: loop
 Given I have some money
 When I ran out of money
 Then I make a loan in the bank
-
+And wtf
 Scenario: loop2
 Given I have some money
 When I ran out of money

@@ -8,9 +8,10 @@ module Parser =
     let ws = spaces
     let str s = pstring s
     let token : Parser<string, unit> = many1Satisfy (fun c -> isDigit c || isLetter c)
-    let input : Parser<string, unit> = ws >>. many1Chars (noneOf "\n") .>> optional (many (pchar '\n'))
+    let input : Parser<string, unit> = optional ws >>. many1Chars (noneOf "\n") .>> optional (many (pchar '\n'))
     let cellInput : Parser<string, unit> = many1Satisfy (isNoneOf "|\n")
-    let stepToDefinition s (a, b) = (a :: b) |> List.map (Definition >> s)
+    let flatten (a, b) = (a, b)
+    let stepToDefinition s (a, d) = (a :: d) |> List.map (Definition >> s)
 
     /// Comment parser
     let comment = str "#" >>. input |>> Comment
@@ -24,7 +25,7 @@ module Parser =
                 |>> Table
 
     /// Step parser
-    let step keyword = (str keyword >>. input .>>. opt table)
+    let step keyword = (str keyword >>. input .>>. opt table) |>> flatten
 
     /// Definition parser
     let definition identity s = (step identity) .>>. many (step "And " <|> step "But ") |>> stepToDefinition s
